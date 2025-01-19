@@ -36,12 +36,14 @@ export default function TaskForm({ isNew }) {
 
     return (
         <form onSubmit={handleSubmit} className="task-form">
+            <label>Task Title</label>
             <input
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="Enter Title" // Призрачный текст
             />
+            <label>Task Description</label>
             <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}

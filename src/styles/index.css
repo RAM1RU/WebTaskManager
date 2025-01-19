@@ -10,14 +10,21 @@ body {
 }
 
 .left-column {
-  width: 30%;
+  width: 20%;
   padding: 20px;
+  border-right: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Высота левой колонки на весь экран */
+  overflow: hidden; /* Убираем прокрутку самой колонки */
   border-right: 1px solid #ddd;
 }
 
 .right-column {
-  width: 70%;
+  width: 80%;
   padding: 20px;
+  background-color: #ddd;
+  height: 100%;
 }
 
 .task-form input,body {
@@ -30,18 +37,6 @@ body {
 .app {
   display: flex;
   height: 100vh;
-}
-
-.left-column {
-  width: 20%;
-  border-right: 1px solid #ddd;
-  padding: 20px;
-}
-
-.right-column {
-  width: 70%;
-  padding: 20px;
-  background-color: #ddd;
 }
 
 h1 {
@@ -74,7 +69,28 @@ h1 {
 }
 
 .task-list {
-  margin-top: 20px;
+  max-height: calc(100vh - 150px); /* Ограничиваем высоту списка задач */
+  overflow-y: auto; /* Добавляем вертикальную прокрутку */
+  padding-right: 10px;
+  flex-grow: 1; /* Заполняет оставшееся пространство внутри левой колонки */
+
+}
+
+.task-list::-webkit-scrollbar {
+  width: 8px; /* Ширина полосы прокрутки */
+}
+
+.task-list::-webkit-scrollbar-thumb {
+  background-color: #ccc; /* Цвет ползунка */
+  border-radius: 4px; /* Закругление для эстетики */
+}
+
+.task-list::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa; /* Цвет ползунка при наведении */
+}
+
+.task-list::-webkit-scrollbar-track {
+  background-color: #f0f0f0; /* Цвет фона полосы прокрутки */
 }
 
 .task-list .task-item {
@@ -85,12 +101,29 @@ h1 {
 }
 
 .task-list .task-checkbox {
-  margin-right: 5px;
+  flex-shrink: 0; /* Запрещаем изменять размер чекбокса */
+  width: 20px; /* Фиксированная ширина для чекбокса */
+  margin-right: 10px;
 }
 
 .task-list .task-title {
-  flex: 1;
-  cursor: pointer;
+  flex-grow: 1; /* Название задачи занимает оставшееся пространство */
+  flex-shrink: 0;
+  max-width: calc(100% - 100px); /* Учитываем фиксированное место для кнопок */
+  font-size: 12px; /* Уменьшенный шрифт */
+  color: #333;
+  white-space: nowrap; /* Запрещаем перенос текста */
+  overflow: hidden; /* Скрываем выходящий текст */
+  text-overflow: ellipsis; /* Добавляем многоточие */
+  margin-right: 10px;
+}
+
+.task-buttons {
+  display: flex;
+  flex-direction: row; /* Расположение кнопок друг под другом */
+  gap: 5px; /* Расстояние между кнопками */
+  flex-shrink: 0; /* Фиксированный размер кнопок */
+  width: 32px; /* Фиксированная ширина для кнопок */
 }
 
 .task-buttons button {
@@ -98,14 +131,14 @@ h1 {
   border: none;
   padding: 0;
   cursor: pointer;
-  width: 32px; /* Размер кнопки равен размеру изображения */
-  height: 32px;
+  width: 28px; /* Уменьшенный размер кнопки */
+  height: 28px;
 }
 
 .task-buttons button img {
-  width: 100%; /* Изображение занимает всю кнопку */
+  width: 100%; /* Изображение подгоняется под размер кнопки */
   height: 100%;
-  object-fit: contain; /* Сохраняет пропорции изображения */
+  object-fit: contain; /* Сохраняем пропорции изображения */
 }
 
 .task-list .task-item span {

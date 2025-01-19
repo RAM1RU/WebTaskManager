@@ -15,6 +15,7 @@ export default function TaskDetails() {
     return (
         <div className="task-details">
             <div className="task-details__title">
+                <label>Task Title</label>
                 <input
                     type="text"
                     value={task.title}
@@ -23,6 +24,7 @@ export default function TaskDetails() {
                 />
             </div>
             <div className="task-details__description">
+                <label>Task Description</label>
                 <textarea
                     value={task.description}
                     readOnly // Поле только для чтения

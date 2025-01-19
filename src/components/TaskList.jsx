@@ -2,13 +2,20 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleTask, deleteTask } from '../redux/tasksSlice';
 import { useNavigate } from 'react-router-dom';
-import editIcon from '../images/edit.png'; // Импорт иконки Edit
-import deleteIcon from '../images/delete.png'; // Импорт иконки Delete
+import editIcon from '../images/edit.png';
+import deleteIcon from '../images/delete.png';
 
 function TaskList() {
     const tasks = useSelector((state) => state.tasks.filteredTasks);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    const truncateTitle = (title, maxLength) => {
+        if (title.length > maxLength) {
+            return title.slice(0, maxLength) + '...'; // Обрезка строки с добавлением многоточия
+        }
+        return title;
+    };
 
     return (
         <div className="task-list">
@@ -21,8 +28,12 @@ function TaskList() {
                             onChange={() => dispatch(toggleTask(task.id))}
                         />
                     </div>
-                    <div className="task-title" onClick={() => navigate(`/${task.id}`)}>
-                        {task.title}
+                    <div
+                        className="task-title"
+                        onClick={() => navigate(`/${task.id}`)}
+                        title={task.title} // Показываем полный текст при наведении
+                    >
+                        {truncateTitle(task.title, 40)}
                     </div>
                     <div className="task-buttons">
                         <button onClick={() => navigate(`/${task.id}/edit`)}>
