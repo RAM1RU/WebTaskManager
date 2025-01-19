@@ -11,13 +11,12 @@ body {
 
 .left-column {
   width: 20%;
-  padding: 20px;
+  padding: 10px;
   border-right: 1px solid #ddd;
   display: flex;
   flex-direction: column;
   height: 100vh; /* Высота левой колонки на весь экран */
   overflow: hidden; /* Убираем прокрутку самой колонки */
-  border-right: 1px solid #ddd;
 }
 
 .right-column {
@@ -40,7 +39,13 @@ body {
 }
 
 h1 {
-  margin: 0 0 20px;
+  margin: 10px 0 10px;
+  color: #373737;
+}
+
+h2 {
+  margin: 0 0 10px;
+  color: #373737;
 }
 
 .categories {
@@ -56,16 +61,18 @@ h1 {
   min-width: 85px;
   padding: 10px 5px; /* Уменьшаем внутренние отступы */
   cursor: pointer;
+  font-family: 'Monaco', sans-serif;
   font-size: 14px;
-  border: 1px solid #ddd;
-  background-color: #f9f9f9;
+  border: 1px solid #555555;
+  background-color: #818181;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
   text-align: center; /* Центрируем текст внутри кнопок */
+  color: white;
+  transition: background-color 0.3s ease;
 }
 
 .categories button:hover {
-  background-color: #e0e0e0;
+  background-color: #555555;
 }
 
 .task-list {
@@ -98,6 +105,11 @@ h1 {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.task-list .task-item span {
+  cursor: pointer;
 }
 
 .task-list .task-checkbox {
@@ -139,10 +151,6 @@ h1 {
   width: 100%; /* Изображение подгоняется под размер кнопки */
   height: 100%;
   object-fit: contain; /* Сохраняем пропорции изображения */
-}
-
-.task-list .task-item span {
-  cursor: pointer;
 }
 
 .right-column .task-form {
@@ -199,9 +207,21 @@ h1 {
   color: #888;
 }
 
-button {
+.create button {
   padding: 10px;
   margin: 5px 0;
+  border-radius: 5px;
+  border: 1px solid #C0C0C0;
+  font-family: 'Monaco', sans-serif;
+  font-size: 14px;
+  color: #373737;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  cursor: pointer;
+}
+
+.create button:hover {
+  background-color: #A1A1A1;
 }
 
 .task-details {
@@ -229,6 +249,8 @@ label{
   display: block;
   font-weight: bold;
   margin-bottom: 5px;
+  text-align: center;
+  color: #333333;
 }
 
 .readonly-field {
@@ -246,4 +268,11 @@ label{
 .readonly-field:focus {
   outline: none;
   border-color: #ddd;
+}
+
+.divider {
+  border: none; /* Убираем стандартную границу */
+  border-top: 1px solid #ddd; /* Горизонтальная линия */
+  margin: 10px 0; /* Отступы сверху и снизу */
+  width: 100%; /* Линия занимает всю ширину */
 }
