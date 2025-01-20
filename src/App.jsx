@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux"; // Импорт useDispatch
-import { setFilter } from "./redux/tasksSlice"; // Импорт setFilter
+import { useDispatch } from "react-redux";
+import { setFilter, loadTasks } from "./redux/tasksSlice";
 import TaskForm from "./components/TaskForm.jsx";
 import TaskDetails from "./components/TaskDetails.jsx";
 import TaskList from "./components/TaskList.jsx";
+import SearchBar from "./components/SearchBar.jsx";
 import "./styles/index.css";
 
 export default function App() {
-    const dispatch = useDispatch(); // Настройка dispatch
+    const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const savedTasks = JSON.parse(localStorage.getItem("tasks"));
+        if (savedTasks) {
+            dispatch(loadTasks(savedTasks));
+        }
+    }, [dispatch]);
 
     return (
         <div className="app">
@@ -20,9 +28,10 @@ export default function App() {
                 <div className="categories">
                     <button onClick={() => dispatch(setFilter("all"))}>All</button>
                     <button onClick={() => dispatch(setFilter("completed"))}>Completed</button>
-                    <button onClick={() => dispatch(setFilter("incomplete"))}>Incompleted</button>
+                    <button onClick={() => dispatch(setFilter("incomplete"))}>Incomplete</button>
                 </div>
                 <hr className="divider" />
+                <SearchBar /> {/* Встраиваем строку поиска */}
                 <div className="create">
                     <button onClick={() => navigate("/new")}>Create New Task</button>
                 </div>

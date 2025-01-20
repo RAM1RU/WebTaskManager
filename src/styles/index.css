@@ -9,6 +9,7 @@ body {
   height: 100vh;
 }
 
+/* Общ. Стили для левой колонки */
 .left-column {
   width: 20%;
   padding: 10px;
@@ -19,6 +20,7 @@ body {
   overflow: hidden; /* Убираем прокрутку самой колонки */
 }
 
+/* Общю Стили для правой колонки */
 .right-column {
   width: 80%;
   padding: 20px;
@@ -26,16 +28,12 @@ body {
   height: 100%;
 }
 
+/* Стили для поля ввода инфы о Таске */
 .task-form input,body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-.app {
-  display: flex;
-  height: 100vh;
 }
 
 h1 {
@@ -275,4 +273,28 @@ label{
   border-top: 1px solid #ddd; /* Горизонтальная линия */
   margin: 10px 0; /* Отступы сверху и снизу */
   width: 100%; /* Линия занимает всю ширину */
+}
+
+.search-bar {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.search-bar input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 0255, 0.5);
 }
