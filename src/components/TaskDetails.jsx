@@ -19,7 +19,7 @@ export default function TaskDetails() {
                 <input
                     type="text"
                     value={task.title}
-                    readOnly // Поле только для чтения
+                    readOnly
                     className="readonly-field"
                 />
             </div>
@@ -27,7 +27,7 @@ export default function TaskDetails() {
                 <label>Task Description</label>
                 <textarea
                     value={task.description}
-                    readOnly // Поле только для чтения
+                    readOnly
                     className="readonly-field"
                 />
             </div>

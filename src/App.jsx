@@ -31,7 +31,7 @@ export default function App() {
                     <button onClick={() => dispatch(setFilter("incomplete"))}>Incomplete</button>
                 </div>
                 <hr className="divider" />
-                <SearchBar /> {/* Встраиваем строку поиска */}
+                <SearchBar />
                 <div className="create">
                     <button onClick={() => navigate("/new")}>Create New Task</button>
                 </div>
