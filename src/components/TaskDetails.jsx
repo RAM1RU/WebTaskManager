@@ -9,7 +9,7 @@ export default function TaskDetails() {
     );
 
     if (!task) {
-        return <div className="placeholder">Задача не найдена</div>;
+        return <div className="placeholder">Task was not found</div>;
     }
 
     return (
